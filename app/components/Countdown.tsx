@@ -162,7 +162,7 @@ export default function Countdown() {
             textShadow: "0 0 40px rgba(255,255,255,0.3), 0 0 80px rgba(168,85,247,0.4)",
           }}
         >
-          Team<span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Taatom</span>
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Taatom</span>
         </motion.h1>
         
         <motion.p
