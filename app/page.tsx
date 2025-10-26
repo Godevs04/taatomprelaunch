@@ -54,7 +54,7 @@ export default function Home() {
           </div>
           <div className="border-t border-gray-700 pt-6 sm:pt-8 text-center">
             <p className="text-gray-400 text-sm sm:text-base">
-              © 2024 TeamTaatom. All rights reserved. ✈️🌍
+              © 2025 TeamTaatom. All rights reserved. ✈️🌍
             </p>
             <p className="text-xs sm:text-sm text-gray-500 mt-2">
               Your journey starts here. We&apos;ll notify you when we launch!
