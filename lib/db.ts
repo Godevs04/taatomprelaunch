@@ -1,14 +1,12 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGO_URL || "";
-const DB_NAME = process.env.DB_NAME || "taatompreusers";
+// These will be read at runtime, not at module load time
+function getMongoUri() {
+  return process.env.MONGO_URL || "";
+}
 
-// Don't throw error during build time - only at runtime
-if (!MONGODB_URI && typeof window === "undefined") {
-  // Only warn during build, don't throw
-  if (process.env.NODE_ENV !== "production") {
-    console.warn("Warning: MONGO_URL is not defined. Database connection will fail.");
-  }
+function getDbName() {
+  return process.env.PRODUCTION_DB_NAME || process.env.DB_NAME || "taatompreusers";
 }
 
 interface MongooseCache {
@@ -32,6 +30,14 @@ async function connectDB() {
   }
 
   if (!cached.promise) {
+    // Read environment variables at runtime
+    const MONGODB_URI = getMongoUri();
+    const DB_NAME = getDbName();
+    
+    if (!MONGODB_URI) {
+      throw new Error("MONGO_URL environment variable is not set");
+    }
+    
     const opts = {
       bufferCommands: false,
       dbName: DB_NAME,
