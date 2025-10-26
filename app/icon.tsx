@@ -4,7 +4,7 @@ import { ImageResponse } from 'next/og';
 export const runtime = 'edge';
  
 // Image metadata
-export const alt = 'TeamTaatom';
+export const alt = 'Taatom';
 export const size = {
   width: 512,
   height: 512,

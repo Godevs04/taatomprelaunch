@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TeamTaatom - Travel Anywhere And Take Only Memories",
+  title: "Taatom - Travel Anywhere And Take Only Memories",
   description: "A travel-focused social platform to document journeys, visualize travel routes, and connect with fellow explorers worldwide.",
   icons: {
     icon: '/icon.png',

@@ -1,17 +1,17 @@
-# TeamTaatom Prelaunch Website
+# Taatom Prelaunch Website
 
-A stunning prelaunch landing website for TeamTaatom with countdown timer, signup form, and email confirmation.
+A stunning prelaunch landing website for Taatom with countdown timer, signup form, and email confirmation.
 
 ## 🚀 Features
 
 - **Countdown Timer**: Dynamic countdown to launch date with beautiful animations
-- **Enhanced About Section**: Comprehensive information about TeamTaatom's features and mission
+- **Enhanced About Section**: Comprehensive information about Taatom's features and mission
 - **Complete Signup Form**: Collects name, email, password, and confirm password
 - **Secure Password Storage**: Passwords are hashed using bcryptjs before storage
 - **Email Confirmation**: Beautiful HTML email templates sent via Nodemailer
 - **MongoDB Integration**: Stores user data ready for migration when app launches
 - **Modern UI**: Elegant glassmorphism design with gradient backgrounds
-- **Travel-Focused Design**: Beautiful travel-themed UI matching TeamTaatom's brand
+- **Travel-Focused Design**: Beautiful travel-themed UI matching Taatom's brand
 - **Responsive**: Mobile-first design that works on all devices
 - **Smooth Animations**: Framer Motion animations throughout
 

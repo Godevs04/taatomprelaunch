@@ -90,7 +90,7 @@ export default function SignupForm() {
             Welcome Aboard!
           </h3>
           <p className="text-xl text-gray-700 mb-4 font-semibold">
-            You&apos;re officially part of TeamTaatom&apos;s early explorer community
+            You&apos;re officially part of Taatom&apos;s early explorer community
           </p>
           <p className="text-sm text-gray-500 mb-8">
             Check your email for confirmation. We&apos;ll notify you when we launch!

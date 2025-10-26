@@ -12,14 +12,14 @@ export async function sendConfirmationEmail(email: string, name: string) {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
-    subject: "Welcome to TeamTaatom - Your Journey Starts Soon! 🌍",
+    subject: "Welcome to Taatom - Your Journey Starts Soon! 🌍",
     html: `
       <!DOCTYPE html>
       <html lang="en">
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Welcome to TeamTaatom</title>
+        <title>Welcome to Taatom</title>
       </head>
       <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5;">
         <table role="presentation" style="width: 100%; border-collapse: collapse; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); padding: 40px 20px;">
@@ -42,7 +42,7 @@ export async function sendConfirmationEmail(email: string, name: string) {
                     <div style="background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); border-left: 4px solid #667eea; border-radius: 12px; padding: 25px; margin-bottom: 30px;">
                       <div style="font-size: 40px; margin-bottom: 10px;">🎉</div>
                       <p style="font-size: 18px; line-height: 1.8; color: #333; margin: 0; font-weight: 600;">
-                        You're officially part of <span style="color: #667eea; font-weight: 800;">TeamTaatom's early explorer community</span>!
+                        You're officially part of <span style="color: #667eea; font-weight: 800;">Taatom's early explorer community</span>!
                       </p>
                     </div>
                     
@@ -118,14 +118,14 @@ export async function sendConfirmationEmail(email: string, name: string) {
                 <!-- Footer -->
                 <tr>
                   <td style="background: #f8f9fa; padding: 30px 40px; text-align: center; border-top: 2px solid #e9ecef;">
-                    <p style="color: #667eea; font-size: 24px; font-weight: 800; margin: 0 0 10px 0;">TeamTaatom</p>
+                    <p style="color: #667eea; font-size: 24px; font-weight: 800; margin: 0 0 10px 0;">Taatom</p>
                     <p style="color: #666; font-size: 14px; margin: 0 0 20px 0; line-height: 1.6;">
                       Thank you for joining us on this incredible journey!<br>
                       We can't wait to help you document your adventures and connect with explorers worldwide.
                     </p>
                     <div style="border-top: 1px solid #e9ecef; padding-top: 20px;">
                       <p style="color: #999; font-size: 12px; margin: 0;">
-                        © 2024 TeamTaatom. All rights reserved. ✈️🌍<br>
+                        © 2024 Taatom. All rights reserved. ✈️🌍<br>
                         <span style="color: #bbb;">You're receiving this because you signed up for early access.</span>
                       </p>
                     </div>
