@@ -3,8 +3,12 @@ import mongoose from "mongoose";
 const MONGODB_URI = process.env.MONGO_URL || "";
 const DB_NAME = process.env.DB_NAME || "taatompreusers";
 
-if (!MONGODB_URI) {
-  throw new Error("Please define the MONGO_URL environment variable inside .env");
+// Don't throw error during build time - only at runtime
+if (!MONGODB_URI && typeof window === "undefined") {
+  // Only warn during build, don't throw
+  if (process.env.NODE_ENV !== "production") {
+    console.warn("Warning: MONGO_URL is not defined. Database connection will fail.");
+  }
 }
 
 interface MongooseCache {

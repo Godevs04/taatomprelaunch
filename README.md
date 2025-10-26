@@ -82,12 +82,35 @@ Modify the email template in `lib/mailer.ts` to customize the confirmation email
 
 ## 🚢 Deployment
 
-This project is ready for deployment on Vercel:
+### Option 1: Docker Deployment
+
+```bash
+# Build and run with Docker Compose
+docker-compose up -d
+
+# Or build Docker image manually
+docker build -t taatom-prelaunch .
+docker run -p 3000:3000 --env-file .env.local taatom-prelaunch
+```
+
+See [DOCKER.md](./DOCKER.md) for detailed Docker setup instructions.
+
+### Option 2: Vercel Deployment
 
 1. Push your code to GitHub
 2. Import the project in Vercel
 3. Add environment variables in Vercel dashboard
 4. Deploy!
+
+### Option 3: Traditional Server Deployment
+
+```bash
+# Build the application
+npm run build
+
+# Start production server
+npm start
+```
 
 ## 📝 License
 

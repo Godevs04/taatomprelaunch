@@ -1,0 +1,26 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - MONGO_URL=mongodb+srv://Kavin_14:1421Kavin@godevs.cfgexon.mongodb.net/?retryWrites=true&w=majority
+        - DB_NAME=taatompreusers
+        - EMAIL_USER=godevsteam@gmail.com
+        - EMAIL_PASS=caoq rzgx luql sayp
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - MONGO_URL=mongodb+srv://Kavin_14:1421Kavin@godevs.cfgexon.mongodb.net/?retryWrites=true&w=majority
+      - DB_NAME=taatompreusers
+      - EMAIL_USER=godevsteam@gmail.com
+      - EMAIL_PASS=caoq rzgx luql sayp
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
