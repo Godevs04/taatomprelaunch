@@ -1,6 +1,6 @@
-# Docker Setup for TeamTaatom Prelaunch Website
+# Docker Setup for Taatom Prelaunch Website
 
-This guide explains how to build and run the TeamTaatom prelaunch website using Docker.
+This guide explains how to build and run the Taatom prelaunch website using Docker.
 
 ## Prerequisites
 

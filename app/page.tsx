@@ -49,12 +49,12 @@ export default function Home() {
       <footer className="bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 text-white py-8 sm:py-10 md:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-6 sm:mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold mb-2">TeamTaatom</h3>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">Taatom</h3>
             <p className="text-purple-300 text-base sm:text-lg">Travel Anywhere And Take Only Memories</p>
           </div>
           <div className="border-t border-gray-700 pt-6 sm:pt-8 text-center">
             <p className="text-gray-400 text-sm sm:text-base">
-              © 2025 TeamTaatom. All rights reserved. ✈️🌍
+              © 2025 Taatom. All rights reserved. ✈️🌍
             </p>
             <p className="text-xs sm:text-sm text-gray-500 mt-2">
               Your journey starts here. We&apos;ll notify you when we launch!

@@ -49,13 +49,13 @@ export default function AboutSection() {
         >
           <div className="text-center mb-8 sm:mb-10 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent mb-3 sm:mb-4 px-2">
-              About TeamTaatom
+              About Taatom
             </h2>
             <p className="text-xl sm:text-2xl md:text-3xl text-purple-600 font-semibold mb-4 sm:mb-5 md:mb-6 px-2">
               Travel Anywhere And Take Only Memories
             </p>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2">
-              TeamTaatom is a travel-focused social media platform that combines photo/video sharing 
+              Taatom is a travel-focused social media platform that combines photo/video sharing 
               with comprehensive location tracking and mapping features. Built for travelers who want to 
               document their journeys, discover new places, and connect with fellow explorers through 
               location-based content.
