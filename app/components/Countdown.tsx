@@ -145,24 +145,33 @@ export default function Countdown() {
           className="mb-6 sm:mb-8"
         >
           <motion.div
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="inline-block mb-4 sm:mb-6"
+            animate={{ rotate: [0, 360], y: [0, -10, 0] }}
+            transition={{ 
+              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+              y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="inline-block mb-4 sm:mb-6 text-6xl sm:text-7xl md:text-8xl lg:text-9xl"
           >
-            <div className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl">🌍</div>
+            🌍
           </motion.div>
+        
         </motion.div>
         
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 sm:mb-6 tracking-tight px-2"
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[120px] mb-4 sm:mb-6 tracking-normal px-2 relative inline-block font-pacifico"
           style={{
-            textShadow: "0 0 40px rgba(255,255,255,0.3), 0 0 80px rgba(168,85,247,0.4)",
+            background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            fontFamily: "var(--font-pacifico), cursive",
+            fontWeight: "400",
           }}
         >
-          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Taatom</span>
+          Taatom
         </motion.h1>
         
         <motion.p
@@ -197,14 +206,15 @@ export default function Countdown() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 border border-white/30 shadow-2xl relative overflow-hidden group"
+              className="bg-white/10 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 border border-white/20 shadow-xl relative overflow-hidden group hover:border-white/30"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
               <div className="relative z-10">
-                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-2 sm:mb-3 tracking-tight bg-gradient-to-b from-white to-white/80 bg-clip-text text-transparent">
+                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-2 sm:mb-3 tracking-tight">
                   {String(unit.value).padStart(2, "0")}
                 </div>
-                <div className="text-[10px] sm:text-xs md:text-sm lg:text-base text-white/90 uppercase tracking-widest font-semibold">
+                <div className="text-[10px] sm:text-xs md:text-sm lg:text-base text-white/70 uppercase tracking-wider font-medium">
                   {unit.label}
                 </div>
               </div>

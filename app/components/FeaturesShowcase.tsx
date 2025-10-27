@@ -1,58 +1,71 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { 
+  Map, 
+  Navigation, 
+  Camera, 
+  Search, 
+  MessageCircle, 
+  BarChart3, 
+  Users, 
+  Award, 
+  Globe,
+  Plane,
+  Target
+} from "lucide-react";
 
 const features = [
   {
-    icon: "🗺️",
+    icon: Map,
     title: "Interactive Travel Maps",
     description: "Visualize your complete journey on beautiful interactive world maps with 3D globe views and route tracking",
     gradient: "from-blue-500 to-cyan-500",
   },
   {
-    icon: "📍",
+    icon: Navigation,
     title: "GPS Location Tracking",
     description: "Automatic location detection with manual tagging. Track every place you've visited with detailed coordinates",
     gradient: "from-purple-500 to-pink-500",
   },
   {
-    icon: "📸",
+    icon: Camera,
     title: "Rich Content Sharing",
     description: "Share photos, videos, and travel stories with automatic location tagging. Document your adventures beautifully",
     gradient: "from-orange-500 to-red-500",
   },
   {
-    icon: "🔍",
+    icon: Search,
     title: "Travel Discovery",
     description: "Discover hidden gems and popular destinations through location-based feeds from fellow travelers worldwide",
     gradient: "from-green-500 to-emerald-500",
   },
   {
-    icon: "💬",
+    icon: MessageCircle,
     title: "Real-Time Chat",
     description: "Connect with fellow travelers instantly. Chat with people in your location and plan trips together",
     gradient: "from-indigo-500 to-purple-500",
   },
   {
-    icon: "📊",
+    icon: BarChart3,
     title: "Travel Analytics",
     description: "Track your travel statistics, distance traveled, countries visited, and celebrate your travel milestones",
     gradient: "from-pink-500 to-rose-500",
   },
   {
-    icon: "👥",
+    icon: Users,
     title: "Travel Community",
     description: "Join groups, follow travelers, and build your network. Connect with locals and explorers globally",
     gradient: "from-teal-500 to-cyan-500",
   },
   {
-    icon: "🎯",
+    icon: Award,
     title: "Achievement System",
     description: "Unlock travel achievements, badges, and milestones. Gamify your journey and showcase your adventures",
     gradient: "from-yellow-500 to-orange-500",
   },
   {
-    icon: "🌐",
+    icon: Globe,
     title: "Global Reach",
     description: "Access travel content from 200+ countries. Explore destinations through user-generated travel content",
     gradient: "from-violet-500 to-purple-500",
@@ -99,8 +112,8 @@ export default function FeaturesShowcase() {
               <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
               
               <div className="relative z-10">
-                <div className="text-4xl sm:text-5xl mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
-                  {feature.icon}
+                <div className="mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+                  <feature.icon className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-purple-600" />
                 </div>
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text transition-all duration-300">
                   {feature.title}

@@ -125,7 +125,7 @@ export async function sendConfirmationEmail(email: string, name: string) {
                     </p>
                     <div style="border-top: 1px solid #e9ecef; padding-top: 20px;">
                       <p style="color: #999; font-size: 12px; margin: 0;">
-                        © 2024 Taatom. All rights reserved. ✈️🌍<br>
+                        © 2025 Taatom. All rights reserved. ✈️🌍<br>
                         <span style="color: #bbb;">You're receiving this because you signed up for early access.</span>
                       </p>
                     </div>

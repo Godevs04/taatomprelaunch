@@ -1,35 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Map, Globe, Camera, Search, Users, BarChart3, Navigation, MessageCircle } from "lucide-react";
 
 const features = [
   {
-    icon: "🗺️",
+    icon: Map,
     title: "Travel Documentation",
     description: "Comprehensive location tracking and mapping with GPS-based tagging",
   },
   {
-    icon: "🌍",
+    icon: Globe,
     title: "Interactive Maps",
     description: "Visualize your travel routes on interactive world maps and 3D globes",
   },
   {
-    icon: "📸",
+    icon: Camera,
     title: "Content Sharing",
     description: "Share photos, videos, and travel experiences with location tagging",
   },
   {
-    icon: "🔍",
+    icon: Search,
     title: "Travel Discovery",
     description: "Discover new destinations through user content and location feeds",
   },
   {
-    icon: "👥",
+    icon: Users,
     title: "Travel Community",
     description: "Connect with fellow travelers and locals worldwide",
   },
   {
-    icon: "📊",
+    icon: BarChart3,
     title: "Travel Analytics",
     description: "Track your travel statistics, distance traveled, and milestones",
   },
@@ -65,25 +66,37 @@ export default function AboutSection() {
           {/* Key Value Propositions */}
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-8 sm:mb-10 md:mb-12">
             <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-purple-100">
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">🌍 Journey Visualization</h3>
+              <div className="mb-3">
+                <Globe className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Journey Visualization</h3>
               <p className="text-sm sm:text-base text-gray-700">
                 Interactive world maps showing your complete travel routes and visited locations with distance calculations.
               </p>
             </div>
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-blue-100">
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">✈️ Location Discovery</h3>
+              <div className="mb-3">
+                <Search className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Location Discovery</h3>
               <p className="text-sm sm:text-base text-gray-700">
                 Find and explore new places through user content, location feeds, and travel inspiration from fellow explorers.
               </p>
             </div>
             <div className="bg-gradient-to-br from-cyan-50 to-purple-50 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-cyan-100">
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">📱 Real-Time Communication</h3>
+              <div className="mb-3">
+                <MessageCircle className="w-8 h-8 text-cyan-600" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Real-Time Communication</h3>
               <p className="text-sm sm:text-base text-gray-700">
                 Connect with fellow travelers through real-time chat, location-based messaging, and collaborative trip planning.
               </p>
             </div>
             <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-pink-100">
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">📊 Travel Analytics</h3>
+              <div className="mb-3">
+                <BarChart3 className="w-8 h-8 text-pink-600" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Travel Analytics</h3>
               <p className="text-sm sm:text-base text-gray-700">
                 Track your travel statistics, journey timeline, achievements, and visualize your travel patterns and milestones.
               </p>
@@ -111,7 +124,9 @@ export default function AboutSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
-                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{feature.icon}</div>
+                <div className="mb-3 sm:mb-4">
+                  <feature.icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-purple-600" />
+                </div>
                 <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">{feature.title}</h4>
                 <p className="text-sm sm:text-base text-gray-600">{feature.description}</p>
               </motion.div>
