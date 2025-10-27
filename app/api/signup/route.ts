@@ -46,11 +46,12 @@ export async function POST(request: NextRequest) {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create new user
+    // Create new user with isEarlyMember flag
     const newUser = new PreUser({
       name,
       email,
       password: hashedPassword,
+      isEarlyMember: true, // Mark as early member
     });
 
     await newUser.save();

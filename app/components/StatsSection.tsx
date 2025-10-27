@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Users, Globe, Plane, Calendar } from "lucide-react";
 
 const stats = [
-  { label: "Early Explorers", value: 2500, suffix: "+", icon: "👥" },
-  { label: "Countries Covered", value: 150, suffix: "+", icon: "🌍" },
-  { label: "Journeys Documented", value: 10000, suffix: "+", icon: "✈️" },
-  { label: "Launch Days", value: 365, suffix: "", icon: "📅" },
+  { label: "Early Explorers", value: 2500, suffix: "+", icon: Users },
+  { label: "Countries Covered", value: 150, suffix: "+", icon: Globe },
+  { label: "Journeys Documented", value: 10000, suffix: "+", icon: Plane },
+  { label: "Launch Days", value: 365, suffix: "", icon: Calendar },
 ];
 
 export default function StatsSection() {
@@ -66,8 +67,8 @@ export default function StatsSection() {
               whileHover={{ scale: 1.05, y: -5 }}
               className="bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 border border-purple-100 shadow-xl hover:shadow-2xl transition-all duration-300 text-center group"
             >
-              <div className="text-3xl sm:text-4xl md:text-5xl mb-2 sm:mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">
-                {stat.icon}
+              <div className="mb-2 sm:mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+                <stat.icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-purple-600" />
               </div>
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-1 sm:mb-2">
                 {counted ? (

@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { PartyPopper, Globe, Plane, Rocket } from "lucide-react";
 
 export default function SignupForm() {
   const [name, setName] = useState("");
@@ -74,17 +75,17 @@ export default function SignupForm() {
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="text-7xl mb-6 inline-block"
+            className="mb-6 inline-block"
           >
-            🎉
+            <PartyPopper className="w-20 h-20 text-purple-600" />
           </motion.div>
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.4, type: "spring" }}
-            className="text-6xl mb-4"
+            className="mb-4"
           >
-            🌍
+            <Globe className="w-16 h-16 text-blue-600 mx-auto" />
           </motion.div>
           <h3 className="text-4xl font-black bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
             Welcome Aboard!
@@ -123,7 +124,9 @@ export default function SignupForm() {
       <div className="relative z-10">
         <form onSubmit={handleSubmit}>
           <div className="text-center mb-6 sm:mb-8">
-            <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">✈️</div>
+            <div className="mb-3 sm:mb-4">
+              <Plane className="w-16 h-16 sm:w-20 sm:h-20 text-purple-600 mx-auto" />
+            </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent mb-2 sm:mb-3 px-2">
               Join Early Access
             </h2>
@@ -259,8 +262,9 @@ export default function SignupForm() {
             </span>
           </motion.button>
 
-          <p className="text-xs text-center text-gray-500 mt-4">
-            By signing up, you agree to our Terms of Service and Privacy Policy. Your account will be ready when we launch! 🚀
+          <p className="text-xs text-center text-gray-500 mt-4 flex items-center justify-center gap-1">
+            By signing up, you agree to our Terms of Service and Privacy Policy. Your account will be ready when we launch! 
+            <Rocket className="w-4 h-4 inline text-purple-600" />
           </p>
         </div>
         </form>

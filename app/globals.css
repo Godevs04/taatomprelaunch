@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --font-poppins: 'Poppins', sans-serif;
+    --font-playfair: 'Playfair Display', serif;
+    --font-dancing: 'Dancing Script', cursive;
+    --font-pacifico: 'Pacifico', cursive;
+    --font-satisfy: 'Satisfy', cursive;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

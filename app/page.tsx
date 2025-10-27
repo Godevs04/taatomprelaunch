@@ -4,6 +4,7 @@ import StatsSection from "./components/StatsSection";
 import FeaturesShowcase from "./components/FeaturesShowcase";
 import SignupForm from "./components/SignupForm";
 import ScrollProgress from "./components/ScrollProgress";
+import { Plane, Globe, Shield } from "lucide-react";
 
 export default function Home() {
   return (
@@ -37,8 +38,9 @@ export default function Home() {
             <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-2 px-2">
               Create your account now and be ready when we launch
             </p>
-            <p className="text-xs sm:text-sm text-gray-500 px-2">
-              Your credentials are secure and will be ready for login when we go live! 🔒
+            <p className="text-xs sm:text-sm text-gray-500 px-2 flex items-center justify-center gap-1">
+              Your credentials are secure and will be ready for login when we go live! 
+              <Shield className="w-4 h-4 inline text-purple-600" />
             </p>
           </div>
           <SignupForm />
@@ -53,8 +55,10 @@ export default function Home() {
             <p className="text-purple-300 text-base sm:text-lg">Travel Anywhere And Take Only Memories</p>
           </div>
           <div className="border-t border-gray-700 pt-6 sm:pt-8 text-center">
-            <p className="text-gray-400 text-sm sm:text-base">
-              © 2025 Taatom. All rights reserved. ✈️🌍
+            <p className="text-gray-400 text-sm sm:text-base flex items-center justify-center gap-2">
+              © 2025 Taatom. All rights reserved. 
+              <Plane className="w-4 h-4 inline" />
+              <Globe className="w-4 h-4 inline" />
             </p>
             <p className="text-xs sm:text-sm text-gray-500 mt-2">
               Your journey starts here. We&apos;ll notify you when we launch!
