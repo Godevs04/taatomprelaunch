@@ -22,7 +22,7 @@ const PreUserSchema = new Schema<IPreUser>({
     trim: true,
     minlength: 3,
     maxlength: 30,
-    match: /^[a-z0-9_]+$/, // Only lowercase letters, numbers, and underscores
+    match: /^[a-z0-9_.]+$/, // Only lowercase letters, numbers, and underscores
   },
   email: {
     type: String,
