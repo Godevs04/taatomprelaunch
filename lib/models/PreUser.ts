@@ -2,6 +2,7 @@ import mongoose, { Schema, Model } from "mongoose";
 
 export interface IPreUser {
   name: string;
+  username: string;
   email: string;
   password: string | null; // null for prelaunch users, set when they create password
   joinedAt: Date;
@@ -12,6 +13,16 @@ const PreUserSchema = new Schema<IPreUser>({
   name: {
     type: String,
     required: true,
+  },
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true,
+    minlength: 3,
+    maxlength: 30,
+    match: /^[a-z0-9_]+$/, // Only lowercase letters, numbers, and underscores
   },
   email: {
     type: String,
