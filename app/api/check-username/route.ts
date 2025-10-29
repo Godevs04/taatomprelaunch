@@ -13,11 +13,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate username format
-    const usernameRegex = /^[a-z0-9_]+$/;
+    // Validate username format (allow letters, numbers, underscore and dot)
+    const usernameRegex = /^[a-z0-9_.]+$/;
     if (!usernameRegex.test(username.toLowerCase())) {
       return NextResponse.json(
-        { available: false, error: "Username can only contain lowercase letters, numbers, and underscores" },
+        { available: false, error: "Username can only contain lowercase letters, numbers, underscores and dots" },
         { status: 200 }
       );
     }
