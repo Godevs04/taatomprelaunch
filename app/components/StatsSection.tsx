@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { Users, Globe, Plane, Calendar } from "lucide-react";
 
 const stats = [
-  { label: "Early Explorers", value: 2500, suffix: "+", icon: Users },
+  { label: "Early Explorers", value: 250, suffix: "+", icon: Users },
   { label: "Countries Covered", value: 150, suffix: "+", icon: Globe },
-  { label: "Journeys Documented", value: 10000, suffix: "+", icon: Plane },
+  { label: "Journeys Documented", value: 100, suffix: "+", icon: Plane },
   { label: "Launch Days", value: 365, suffix: "", icon: Calendar },
 ];
 
