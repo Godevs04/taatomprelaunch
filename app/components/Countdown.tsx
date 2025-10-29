@@ -163,11 +163,12 @@ export default function Countdown() {
             {/* Logo image */}
             <div className="relative z-10">
               <Image 
-                src="/assets/Logo_Only.png" 
+                src="/assets/Logo_Only.PNG" 
                 alt="Taatom Logo" 
                 width={350}
                 height={350}
-                className="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 object-contain mx-auto drop-shadow-2xl"
+                className="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 object-contain mx-auto drop-shadow-2xl mix-blend-multiply"
+                unoptimized
                 priority
                 style={{
                   filter: "drop-shadow(0 20px 40px rgba(37, 99, 235, 0.15)) drop-shadow(0 10px 20px rgba(8, 145, 178, 0.1))"
