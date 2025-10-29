@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface TimeLeft {
   days: number;
@@ -54,10 +55,12 @@ export default function Countdown() {
   ];
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 via-pink-800 to-rose-900"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+      {/* Animated Gradient Background - stronger match to number gradient */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-cyan-600/20 to-green-600/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-cyan-600/15 to-green-600/15"></div>
+      <div className="absolute inset-0 bg-gradient-to-bl from-green-600/12 via-cyan-600/12 to-blue-600/12"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-transparent"></div>
       
       {/* Animated Particles/Stars */}
       <div className="absolute inset-0 overflow-hidden">
@@ -68,7 +71,7 @@ export default function Countdown() {
           return (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-white rounded-full"
+              className="absolute w-1 h-1 bg-blue-400 rounded-full"
               style={{
                 left: `${initialX}%`,
                 top: `${initialY}%`,
@@ -92,7 +95,7 @@ export default function Countdown() {
       {/* Animated Orbs/Glow Effects */}
       <div className="absolute inset-0">
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/15 to-cyan-600/15 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             x: [0, 50, 0],
@@ -105,7 +108,7 @@ export default function Countdown() {
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-pink-400/30 to-rose-400/30 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-green-600/15 to-blue-600/15 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.3, 1],
             x: [0, -50, 0],
@@ -119,7 +122,7 @@ export default function Countdown() {
           }}
         />
         <motion.div
-          className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-cyan-600/10 to-blue-600/10 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.5, 1],
             rotate: [0, 180, 360],
@@ -132,53 +135,72 @@ export default function Countdown() {
         />
       </div>
       
-      {/* Mesh Gradient Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.3),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(236,72,153,0.3),transparent_50%)]"></div>
+      {/* Mesh Gradient Overlay - Enhanced to match number gradient texture */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(37,99,235,0.12),transparent_60%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(8,145,178,0.1),transparent_60%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(22,163,74,0.12),transparent_60%)]"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-600/5"></div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 md:pt-10 pb-10 sm:pb-12 md:pb-16">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, type: "spring" }}
-          className="mb-6 sm:mb-8"
+          className="mb-5 sm:mb-6 md:mb-7 relative flex justify-center items-center"
         >
+          {/* Logo - merged with background */}
           <motion.div
-            animate={{ rotate: [0, 360], y: [0, -10, 0] }}
-            transition={{ 
-              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-              y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-            }}
-            className="inline-block mb-4 sm:mb-6 text-6xl sm:text-7xl md:text-8xl lg:text-9xl"
+            animate={{ y: [0, -5, 0] }}
+            transition={{ y: { duration: 3, repeat: Infinity, ease: "easeInOut" } }}
+            className="relative z-10"
           >
-            🌍
+            {/* Subtle glow effect matching background gradient */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 bg-gradient-to-r from-blue-600/10 via-cyan-600/10 to-green-600/10 rounded-full blur-2xl"></div>
+            </div>
+            
+            {/* Logo image */}
+            <div className="relative z-10">
+              <Image 
+                src="/assets/Logo_Only.png" 
+                alt="Taatom Logo" 
+                width={350}
+                height={350}
+                className="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 object-contain mx-auto drop-shadow-2xl"
+                priority
+                style={{
+                  filter: "drop-shadow(0 20px 40px rgba(37, 99, 235, 0.15)) drop-shadow(0 10px 20px rgba(8, 145, 178, 0.1))"
+                }}
+              />
+            </div>
           </motion.div>
-        
         </motion.div>
         
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[120px] mb-4 sm:mb-6 tracking-normal px-2 relative inline-block font-pacifico"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[84px] mb-3 sm:mb-4 md:mb-5 tracking-normal px-2 relative inline-block uppercase font-bold leading-tight"
           style={{
-            background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)",
+            // background: "linear-gradient(to right, #2563eb, #06b6d4, #16a34a)",
+            background: "linear-gradient(to right,black,black)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
-            fontFamily: "var(--font-pacifico), cursive",
-            fontWeight: "400",
+            fontFamily: "var(--font-playfair), serif",
+            fontWeight: "700",
+            letterSpacing: "0.05em",
           }}
         >
-          Taatom
+          TAATOM
         </motion.h1>
         
         <motion.p
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/95 mb-3 sm:mb-4 font-semibold px-2"
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-800 mb-3 sm:mb-4 font-semibold px-2"
         >
           Travel Anywhere And Take Only Memories
         </motion.p>
@@ -187,7 +209,7 @@ export default function Countdown() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto px-2"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto px-2"
         >
           Join thousands of explorers documenting their journeys, visualizing routes, and connecting worldwide
         </motion.p>
@@ -197,7 +219,7 @@ export default function Countdown() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10 md:mb-12 max-w-5xl mx-auto px-2"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5 mb-6 sm:mb-8 md:mb-10 max-w-5xl mx-auto px-2"
         >
           {timeUnits.map((unit, index) => (
             <motion.div
@@ -206,15 +228,15 @@ export default function Countdown() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white/10 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 border border-white/20 shadow-xl relative overflow-hidden group hover:border-white/30"
+              className="bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-7 border border-blue-200/50 shadow-xl relative overflow-hidden group hover:border-blue-300/70"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <div className="relative z-10">
-                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-2 sm:mb-3 tracking-tight">
+                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black bg-gradient-to-r from-blue-600 via-cyan-600 to-green-600 bg-clip-text text-transparent mb-2 sm:mb-3 tracking-tight">
                   {String(unit.value).padStart(2, "0")}
                 </div>
-                <div className="text-[10px] sm:text-xs md:text-sm lg:text-base text-white/70 uppercase tracking-wider font-medium">
+                <div className="text-[10px] sm:text-xs md:text-sm lg:text-base text-gray-600 uppercase tracking-wider font-medium">
                   {unit.label}
                 </div>
               </div>
@@ -257,7 +279,7 @@ export default function Countdown() {
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white/10 backdrop-blur-md text-white border-2 border-white/30 px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full text-sm sm:text-base md:text-lg font-semibold hover:bg-white/20 transition-all duration-300 shadow-xl w-full sm:w-auto"
+            className="bg-white/80 backdrop-blur-md text-gray-800 border-2 border-blue-300/50 px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full text-sm sm:text-base md:text-lg font-semibold hover:bg-white/90 transition-all duration-300 shadow-xl w-full sm:w-auto"
           >
             Learn More
           </motion.button>
