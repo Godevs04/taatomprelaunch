@@ -4,6 +4,14 @@ import { useState, FormEvent, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PartyPopper, Globe, Plane, Rocket, CheckCircle2, XCircle } from "lucide-react";
 
+const PASSWORD_REQUIREMENTS = [
+  { label: "At least 8 characters", test: (value: string) => value.length >= 8 },
+  { label: "One uppercase letter", test: (value: string) => /[A-Z]/.test(value) },
+  { label: "One lowercase letter", test: (value: string) => /[a-z]/.test(value) },
+  { label: "One number", test: (value: string) => /\d/.test(value) },
+  { label: "One special character", test: (value: string) => /[^A-Za-z0-9]/.test(value) },
+] as const;
+
 export default function SignupForm() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -18,6 +26,7 @@ export default function SignupForm() {
   const [usernameStatus, setUsernameStatus] = useState<"idle" | "checking" | "available" | "taken" | "invalid">("idle");
   const [usernameMessage, setUsernameMessage] = useState("");
   const [toast, setToast] = useState<{ message: string; type: "error" | "success" } | null>(null);
+  const [passwordTouched, setPasswordTouched] = useState(false);
 
   // Debounced username validation
   const checkUsername = useCallback(async (value: string) => {
@@ -100,14 +109,15 @@ export default function SignupForm() {
     e.preventDefault();
     setError("");
 
-    // Client-side validation
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
+    const unmetRequirements = PASSWORD_REQUIREMENTS.filter((requirement) => !requirement.test(password));
+    if (unmetRequirements.length > 0) {
+      const requirementText = unmetRequirements.map((requirement) => requirement.label.toLowerCase()).join(", ");
+      setError(`Password must include ${requirementText}.`);
       return;
     }
 
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long");
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
       return;
     }
 
@@ -143,6 +153,7 @@ export default function SignupForm() {
       setEmail("");
       setPassword("");
       setConfirmPassword("");
+      setPasswordTouched(false);
       setUsernameStatus("idle");
       setUsernameMessage("");
     } catch (err: any) {
@@ -358,10 +369,15 @@ export default function SignupForm() {
                   type={showPassword ? "text" : "password"}
                   id="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => {
+                    if (!passwordTouched) {
+                      setPasswordTouched(true);
+                    }
+                    setPassword(e.target.value);
+                  }}
                   required
                   className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-purple-400 outline-none transition-all bg-white text-gray-900 placeholder-gray-400 hover:border-purple-300 shadow-sm pr-10 sm:pr-12 z-10 relative text-sm sm:text-base"
-                  placeholder="Create a password (min. 6 characters)"
+                  placeholder="Create a password (min. 8 characters with letters, numbers, and symbols)"
                   style={{ zIndex: 10 }}
                 />
             <button
@@ -373,6 +389,23 @@ export default function SignupForm() {
             </button>
           </div>
             </div>
+            {(passwordTouched || password) && (
+              <ul className="mt-2 space-y-1 rounded-xl bg-white/60 p-3 text-xs sm:text-sm shadow-sm border border-gray-100">
+                {PASSWORD_REQUIREMENTS.map((requirement) => {
+                  const isMet = requirement.test(password);
+                  return (
+                    <li key={requirement.label} className="flex items-center gap-2">
+                      {isMet ? (
+                        <CheckCircle2 className="w-4 h-4 text-green-500" />
+                      ) : (
+                        <XCircle className="w-4 h-4 text-red-400" />
+                      )}
+                      <span className={isMet ? "text-green-600" : "text-gray-600"}>{requirement.label}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
 
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
