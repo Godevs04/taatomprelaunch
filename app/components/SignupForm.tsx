@@ -27,6 +27,7 @@ export default function SignupForm() {
   const [usernameMessage, setUsernameMessage] = useState("");
   const [toast, setToast] = useState<{ message: string; type: "error" | "success" } | null>(null);
   const [passwordTouched, setPasswordTouched] = useState(false);
+  const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
 
   // Debounced username validation
   const checkUsername = useCallback(async (value: string) => {
@@ -154,6 +155,7 @@ export default function SignupForm() {
       setPassword("");
       setConfirmPassword("");
       setPasswordTouched(false);
+      setConfirmPasswordTouched(false);
       setUsernameStatus("idle");
       setUsernameMessage("");
     } catch (err: any) {
@@ -375,6 +377,8 @@ export default function SignupForm() {
                     }
                     setPassword(e.target.value);
                   }}
+                  onPaste={(e) => e.preventDefault()}
+                  onCopy={(e) => e.preventDefault()}
                   required
                   className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-purple-400 outline-none transition-all bg-white text-gray-900 placeholder-gray-400 hover:border-purple-300 shadow-sm pr-10 sm:pr-12 z-10 relative text-sm sm:text-base"
                   placeholder="Create a password (min. 8 characters with letters, numbers, and symbols)"
@@ -416,7 +420,14 @@ export default function SignupForm() {
                   type={showConfirmPassword ? "text" : "password"}
                   id="confirmPassword"
                   value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  onChange={(e) => {
+                    if (!confirmPasswordTouched) {
+                      setConfirmPasswordTouched(true);
+                    }
+                    setConfirmPassword(e.target.value);
+                  }}
+                  onPaste={(e) => e.preventDefault()}
+                  onCopy={(e) => e.preventDefault()}
                   required
                   className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-purple-400 outline-none transition-all bg-white text-gray-900 placeholder-gray-400 hover:border-purple-300 shadow-sm pr-10 sm:pr-12 z-10 relative text-sm sm:text-base"
                   placeholder="Confirm your password"
@@ -431,6 +442,33 @@ export default function SignupForm() {
             </button>
           </div>
             </div>
+            {(confirmPasswordTouched || confirmPassword) && (
+              <ul className="mt-2 space-y-1 rounded-xl bg-white/60 p-3 text-xs sm:text-sm shadow-sm border border-gray-100">
+                {PASSWORD_REQUIREMENTS.map((requirement) => {
+                  const isMet = requirement.test(confirmPassword);
+                  return (
+                    <li key={requirement.label} className="flex items-center gap-2">
+                      {isMet ? (
+                        <CheckCircle2 className="w-4 h-4 text-green-500" />
+                      ) : (
+                        <XCircle className="w-4 h-4 text-red-400" />
+                      )}
+                      <span className={isMet ? "text-green-600" : "text-gray-600"}>{requirement.label}</span>
+                    </li>
+                  );
+                })}
+                <li className="flex items-center gap-2">
+                  {confirmPassword && confirmPassword === password ? (
+                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                  ) : (
+                    <XCircle className="w-4 h-4 text-red-400" />
+                  )}
+                  <span className={confirmPassword && confirmPassword === password ? "text-green-600" : "text-gray-600"}>
+                    Passwords match
+                  </span>
+                </li>
+              </ul>
+            )}
 
           <AnimatePresence>
             {error && (
