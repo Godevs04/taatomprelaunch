@@ -3,8 +3,68 @@
 import { FileText, Scale, AlertCircle, Shield, Ban, Users } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 export default function TermsOfService() {
+  useEffect(() => {
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.taatom.com";
+    
+    const breadcrumbJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Terms of Service",
+          item: `${siteUrl}/terms`,
+        },
+      ],
+    };
+
+    const articleJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Terms of Service - Taatom",
+      description: "Terms of Service for Taatom - Understand your rights and responsibilities when using our platform.",
+      datePublished: "2025-12-25",
+      dateModified: "2025-12-25",
+      author: {
+        "@type": "Organization",
+        name: "Taatom",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Taatom",
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/assets/Logo_Only.PNG`,
+        },
+      },
+    };
+
+    const script1 = document.createElement("script");
+    script1.type = "application/ld+json";
+    script1.text = JSON.stringify(breadcrumbJsonLd);
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement("script");
+    script2.type = "application/ld+json";
+    script2.text = JSON.stringify(articleJsonLd);
+    document.head.appendChild(script2);
+
+    return () => {
+      document.head.removeChild(script1);
+      document.head.removeChild(script2);
+    };
+  }, []);
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-purple-50/50 via-white to-cyan-50/30">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">

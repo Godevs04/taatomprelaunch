@@ -1,11 +1,62 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Send, CheckCircle2, XCircle, AlertCircle } from "lucide-react";
 import Link from "next/link";
 
 export default function ContactPage() {
+  useEffect(() => {
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.taatom.com";
+    
+    const breadcrumbJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Contact Us",
+          item: `${siteUrl}/contact`,
+        },
+      ],
+    };
+
+    const contactPageJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      name: "Contact Us - Taatom",
+      description: "Contact Taatom - Have a question or feedback? We'd love to hear from you!",
+      url: `${siteUrl}/contact`,
+      mainEntity: {
+        "@type": "Organization",
+        name: "Taatom",
+        email: "contact@taatom.com",
+        url: siteUrl,
+      },
+    };
+
+    const script1 = document.createElement("script");
+    script1.type = "application/ld+json";
+    script1.text = JSON.stringify(breadcrumbJsonLd);
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement("script");
+    script2.type = "application/ld+json";
+    script2.text = JSON.stringify(contactPageJsonLd);
+    document.head.appendChild(script2);
+
+    return () => {
+      document.head.removeChild(script1);
+      document.head.removeChild(script2);
+    };
+  }, []);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
