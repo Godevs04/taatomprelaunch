@@ -11,9 +11,19 @@ interface TimeLeft {
   seconds: number;
 }
 
+interface Particle {
+  id: number;
+  initialX: number;
+  initialY: number;
+  opacity: number;
+  animationY: number;
+  duration: number;
+  delay: number;
+}
+
 export default function Countdown() {
   // Set launch date (change this to your actual launch date)
-  const launchDate = new Date("2025-12-31T00:00:00").getTime();
+  const launchDate = new Date("2026-01-08T00:00:00").getTime();
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
@@ -21,6 +31,24 @@ export default function Countdown() {
     minutes: 0,
     seconds: 0,
   });
+
+  const [particles, setParticles] = useState<Particle[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Generate particles only on client side to avoid hydration mismatch
+  useEffect(() => {
+    setIsMounted(true);
+    const generatedParticles: Particle[] = Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      initialX: Math.random() * 100,
+      initialY: Math.random() * 100,
+      opacity: Math.random() * 0.5 + 0.3,
+      animationY: -(Math.random() * 100 + 50),
+      duration: Math.random() * 3 + 2,
+      delay: Math.random() * 2,
+    }));
+    setParticles(generatedParticles);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -63,34 +91,31 @@ export default function Countdown() {
       <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-transparent"></div>
       
       {/* Animated Particles/Stars */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(50)].map((_, i) => {
-          const initialX = Math.random() * 100;
-          const initialY = Math.random() * 100;
-          const opacity = Math.random() * 0.5 + 0.3;
-          return (
+      {isMounted && (
+        <div className="absolute inset-0 overflow-hidden">
+          {particles.map((particle) => (
             <motion.div
-              key={i}
+              key={particle.id}
               className="absolute w-1 h-1 bg-blue-400 rounded-full"
               style={{
-                left: `${initialX}%`,
-                top: `${initialY}%`,
+                left: `${particle.initialX}%`,
+                top: `${particle.initialY}%`,
               }}
-              initial={{ opacity: opacity }}
+              initial={{ opacity: particle.opacity }}
               animate={{
-                y: [0, -Math.random() * 100 - 50],
-                opacity: [opacity, opacity * 1.5, opacity],
+                y: [0, particle.animationY],
+                opacity: [particle.opacity, particle.opacity * 1.5, particle.opacity],
               }}
               transition={{
-                duration: Math.random() * 3 + 2,
+                duration: particle.duration,
                 repeat: Infinity,
-                delay: Math.random() * 2,
+                delay: particle.delay,
                 ease: "linear",
               }}
             />
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      )}
       
       {/* Animated Orbs/Glow Effects */}
       <div className="absolute inset-0">
