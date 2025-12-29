@@ -5,6 +5,7 @@ import FeaturesShowcase from "./components/FeaturesShowcase";
 import SignupForm from "./components/SignupForm";
 import ScrollProgress from "./components/ScrollProgress";
 import { Plane, Globe, Shield } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -54,8 +55,30 @@ export default function Home() {
             <h3 className="text-xl sm:text-2xl font-bold mb-2">Taatom</h3>
             <p className="text-purple-300 text-base sm:text-lg">Travel Anywhere And Take Only Memories</p>
           </div>
+          
+          {/* Footer Links */}
+          <div className="border-t border-gray-700 pt-6 sm:pt-8 mb-6">
+            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 text-sm sm:text-base">
+              <Link href="/privacy" className="text-purple-300 hover:text-white transition-colors duration-300 hover:underline">
+                Privacy Policy
+              </Link>
+              <span className="text-gray-600">•</span>
+              <Link href="/terms" className="text-purple-300 hover:text-white transition-colors duration-300 hover:underline">
+                Terms of Service
+              </Link>
+              <span className="text-gray-600">•</span>
+              <Link href="/copyrights" className="text-purple-300 hover:text-white transition-colors duration-300 hover:underline">
+                Copyright Consent
+              </Link>
+              <span className="text-gray-600">•</span>
+              <Link href="/contact" className="text-purple-300 hover:text-white transition-colors duration-300 hover:underline">
+                Contact Us
+              </Link>
+            </div>
+          </div>
+          
           <div className="border-t border-gray-700 pt-6 sm:pt-8 text-center">
-            <p className="text-gray-400 text-sm sm:text-base flex items-center justify-center gap-2">
+            <p className="text-gray-400 text-sm sm:text-base flex items-center justify-center gap-2 flex-wrap">
               © 2025 Taatom. All rights reserved. 
               <Plane className="w-4 h-4 inline" />
               <Globe className="w-4 h-4 inline" />
