@@ -1,12 +1,45 @@
 import nodemailer from "nodemailer";
 
-export const transporter = nodemailer.createTransport({
-  service: "gmail",
+// Verify email configuration
+function verifyEmailConfig() {
+  const emailUser = process.env.EMAIL_USER;
+  const emailPass = process.env.EMAIL_PASS;
+
+  if (!emailUser || !emailPass) {
+    console.warn("⚠️  Email configuration missing:");
+    if (!emailUser) console.warn("   - EMAIL_USER is not set");
+    if (!emailPass) console.warn("   - EMAIL_PASS is not set");
+    console.warn("   Contact form submissions will be logged but emails will not be sent.");
+    return false;
+  }
+
+  return true;
+}
+
+// Create transporter with better error handling
+const emailConfig = {
+  service: "gmail" as const,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: process.env.EMAIL_USER || undefined,
+    pass: process.env.EMAIL_PASS || undefined,
   },
-});
+};
+
+export const transporter = nodemailer.createTransport(emailConfig);
+
+// Verify connection on startup (non-blocking)
+if (verifyEmailConfig()) {
+  transporter.verify((error, success) => {
+    if (error) {
+      console.error("❌ Email server connection failed:", error.message);
+      console.error("   Please check your EMAIL_USER and EMAIL_PASS environment variables.");
+      console.error("   For Gmail, make sure you're using an App Password, not your regular password.");
+      console.error("   Learn more: https://support.google.com/accounts/answer/185833");
+    } else {
+      console.log("✅ Email server connection verified successfully");
+    }
+  });
+}
 
 export async function sendConfirmationEmail(email: string, name: string) {
   const mailOptions = {
