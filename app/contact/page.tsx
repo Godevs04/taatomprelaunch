@@ -399,6 +399,10 @@ export default function ContactPage() {
           <Link href="/copyrights" className="text-purple-600 hover:text-purple-700 font-medium hover:underline">
             Copyright Consent
           </Link>
+          <span className="text-gray-400">•</span>
+          <Link href="/child-safety" className="text-purple-600 hover:text-purple-700 font-medium hover:underline">
+            Child Safety
+          </Link>
         </div>
       </div>
     </main>
