@@ -457,6 +457,10 @@ export default function CopyrightConsent() {
             Privacy Policy
           </Link>
           <span className="text-gray-400">•</span>
+          <Link href="/child-safety" className="text-purple-600 hover:text-purple-700 font-medium hover:underline">
+            Child Safety
+          </Link>
+          <span className="text-gray-400">•</span>
           <Link href="/contact" className="text-purple-600 hover:text-purple-700 font-medium hover:underline">
             Contact
           </Link>
